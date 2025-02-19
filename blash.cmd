@@ -2109,14 +2109,14 @@ call :trim rawurl %~2
 if "!rawurl!" == "" goto :eof
 
 @REM github proxy list: https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js
-set proxy_urls[0]=https://mirror.ghproxy.com
-set proxy_urls[1]=https://github.moeyy.xyz
-set proxy_urls[2]=https://gh.ddlc.top
-set proxy_urls[3]=https://hub.gitmirror.com
-set proxy_urls[4]=https://proxy.api.030101.xyz
+set proxy_urls[0]=https://gh.sephiroth.club
+set proxy_urls[1]=https://ghproxy.sephiroth.work
+@REM set proxy_urls[2]=https://gh.ddlc.top
+@REM set proxy_urls[3]=https://hub.gitmirror.com
+@REM set proxy_urls[4]=https://proxy.api.030101.xyz
 
 @REM random [0, 4]
-set /a num=!random! %% 5
+set /a num=!random! %% 2
 set "ghproxy=!proxy_urls[%num%]!"
 
 @REM github proxy
