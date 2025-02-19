@@ -2323,7 +2323,7 @@ if "!force!" == "1" (
     @echo [%ESC%[!infocolor!m信息%ESC%[0m] 开始检查并更新类型为 %ESC%[!warncolor!mHTTP%ESC%[0m 的代理规则
 )
 
-call :filerefresh changed "^\s+behavior:\s+.*" "www.gstatic.com cp.cloudflare.com" "!force!" rulefiles "payload"
+call :filerefresh changed "^\s+behavior:\s+.*" "www.gstatic.com cp.cloudflare.com" "!force!" rulefiles ""
 goto :eof
 
 
