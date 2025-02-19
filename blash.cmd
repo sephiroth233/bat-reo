@@ -1364,7 +1364,7 @@ if !count! GEQ !maxretries! (
     goto :eof
 )
 
-curl.exe --retry 5 --retry-max-time 120 --connect-timeout 20 -s -L -C - -o "!savepath!" "!downloadurl!"
+curl.exe --retry 5 --retry-max-time 120 --connect-timeout 20 -s -L  -o "!savepath!" "!downloadurl!"
 set "failflag=!errorlevel!"
 if not exist "!savepath!" set "failflag=1"
 
