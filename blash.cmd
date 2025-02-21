@@ -3231,10 +3231,10 @@ if "!exepath!" == "!startupvbs!" goto :eof
 
 set "tips=[%ESC%[!warncolor!m提示%ESC%[0m] 是否添加桌面快捷方式？(%ESC%[!warncolor!mY%ESC%[0m/%ESC%[!warncolor!mN%ESC%[0m) "
 if "!msterminal!" == "1" (
-    choice /t 5 /d y /n /m "!tips!"
+    choice /t 5 /d n /n /m "!tips!"
 ) else (
     set /p "=!tips!" <nul
-    choice /t 5 /d y /n
+    choice /t 5 /d n /n
 )
 if !errorlevel! == 2 goto :eof
 
