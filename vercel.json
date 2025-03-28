@@ -17,7 +17,7 @@
     },
     {
       "source": "/navicat-reset",
-      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/navicat-reset.sh",
+      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/navicat-reset.cmd",
       "permanent": true
     }
   ]
