@@ -9,6 +9,16 @@
       "source": "/wsl-docker",
       "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/wsl-docker-setup.sh",
       "permanent": true
+    },
+    {
+      "source": "/jdk",
+      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/jdk.cmd",
+      "permanent": true
+    },
+    {
+      "source": "/navicat-reset",
+      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/navicat-reset.sh",
+      "permanent": true
     }
   ]
 }
