@@ -53,3 +53,10 @@ echo -e "1. 在Windows开机启动文件夹创建 wsl-startup.vbs 文件"
 echo -e "2. 内容为: set ws=wscript.CreateObject(\"wscript.shell\")"
 echo -e "            ws.run \"wsl -d Ubuntu\", 0"
 echo -e "3. 按 Win+R 输入 shell:startup 可快速找到启动文件夹"
+
+
+echo -e "\n\033[31m⚠️ 重要提示：\033[0m"
+echo -e "当前终端会话的docker权限尚未生效，请执行以下操作之一："
+echo -e "1. 完全退出当前WSL会话并重新登录 (执行 'exit')"
+echo -e "2. 或者打开新的WSL终端窗口"
+echo -e "\n验证命令: docker ps"
