@@ -12,6 +12,8 @@ echo -e "\033[33m[STEP 1/6] 更新系统包...\033[0m"
 
 sudo apt update && sudo apt upgrade -y
 
+sudo apt install -y curl wget
+
 
 # 2. 配置免密码sudo
 echo -e "\033[33m[STEP 2/6] 配置免密码sudo...\033[0m"
