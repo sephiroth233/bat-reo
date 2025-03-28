@@ -9,9 +9,9 @@ echo -e "\033[34m[INFO] 开始 WSL Ubuntu + Docker 配置...\033[0m"
 
 # 1. 更新系统
 echo -e "\033[33m[STEP 1/6] 更新系统包...\033[0m"
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y curl wget
+
+sudo apt update && sudo apt upgrade -y
+
 
 # 2. 配置免密码sudo
 echo -e "\033[33m[STEP 2/6] 配置免密码sudo...\033[0m"
