@@ -45,7 +45,7 @@ sudo systemctl enable docker
 echo -e "\n\033[32m[SUCCESS] 安装完成！正在验证...\033[0m"
 docker --version
 docker-compose --version
-docker run --rm hello-world
+
 
 echo -e "\n\033[32m✅ 所有配置已完成！\033[0m"
 echo -e "请手动执行以下操作："
