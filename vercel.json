@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/blash",
+      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/blash.cmd",
+      "permanent": true
+    },
+    {
+      "source": "/wsl-docker",
+      "destination": "https://raw.githubusercontent.com/sephiroth233/bat-reo/main/wsl-docker-setup.sh",
+      "permanent": true
+    }
+  ]
+}
