@@ -2109,15 +2109,15 @@ call :trim rawurl %~2
 if "!rawurl!" == "" goto :eof
 
 @REM github proxy list: https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js
-set proxy_urls[0]=https://gh.sephiroth.club
-set proxy_urls[1]=https://ghproxy.sephiroth.work
+@REM set proxy_urls[0]=https://gh.sephiroth.club
+@REM set proxy_urls[1]=https://ghproxy.sephiroth.work
 @REM set proxy_urls[2]=https://gh.ddlc.top
 @REM set proxy_urls[3]=https://hub.gitmirror.com
 @REM set proxy_urls[4]=https://proxy.api.030101.xyz
 
 @REM random [0, 4]
-set /a num=!random! %% 2
-set "ghproxy=!proxy_urls[%num%]!"
+set /a num=!random! %% 1
+set "ghproxy=https://gh.sephiroth.club"
 
 @REM github proxy
 if "!rawurl:~0,18!" == "https://github.com" set "rawurl=!ghproxy!/!rawurl!"
@@ -2866,10 +2866,10 @@ set "defaulttime=09:15"
 @REM choose
 set "tips=[%ESC%[!warncolor!m提示%ESC%[0m] 正在设置更新时间，默认为 %ESC%[!warncolor!m09:15%ESC%[0m，是否需要修改？(%ESC%[!warncolor!mY%ESC%[0m/%ESC%[!warncolor!mN%ESC%[0m) "
 if "!msterminal!" == "1" (
-    choice /c yn /n /d n /t 5 /m "!tips!"
+    choice /c yn /n /d y /t 5 /m "!tips!"
 ) else (
     set /p "=!tips!" <nul
-    choice /c yn /n /d n /t 5
+    choice /c yn /n /d y /t 5
 )
 
 if !errorlevel! == 2 (
