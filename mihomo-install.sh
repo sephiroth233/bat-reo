@@ -14,7 +14,8 @@ NC='\033[0m' # No Color
 # 配置
 INSTALL_PATH="/usr/local/bin/mihomo"
 TEMP_DIR=$(mktemp -d)
-GITHUB_RELEASE_URL="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha"
+GITHUB_API_URL="https://api.github.com/repos/MetaCubeX/mihomo/releases/latest"
+GITHUB_REPO="MetaCubeX/mihomo"
 
 # 清理临时文件
 cleanup() {
@@ -52,19 +53,32 @@ init_directory() {
     fi
 }
 
-# 获取版本号
-get_version() {
-    log_info "正在获取最新版本号..."
-    version=$(curl -L \
+# 获取最新稳定版本信息
+get_latest_release() {
+    log_info "正在获取最新稳定版本信息..."
+    local release_info=$(curl -L \
         --connect-timeout 5 \
         --max-time 10 \
         --retry 2 \
         --retry-delay 0 \
         --retry-max-time 20 \
-        "${GITHUB_RELEASE_URL}/version.txt" 2>/dev/null)
+        -H "Accept: application/vnd.github+json" \
+        "${GITHUB_API_URL}" 2>/dev/null)
+
+    if [ -z "$release_info" ]; then
+        log_error "获取版本信息失败"
+        exit 1
+    fi
+    echo "$release_info"
+}
+
+# 从 release 信息中提取版本号
+get_version_from_release() {
+    local release_info=$1
+    local version=$(echo "$release_info" | grep -o '"tag_name": *"[^"]*"' | head -1 | sed 's/"tag_name": *"\(.*\)"/\1/')
 
     if [ -z "$version" ]; then
-        log_error "获取版本号失败"
+        log_error "解析版本号失败"
         exit 1
     fi
     echo "$version"
@@ -84,7 +98,7 @@ download_mihomo() {
     log_info "系统架构: $arch"
     log_info "版本号: $version"
 
-    local url="${GITHUB_RELEASE_URL}/mihomo-darwin-${arch}-${version}.gz"
+    local url="https://github.com/${GITHUB_REPO}/releases/download/${version}/mihomo-darwin-${arch}-${version}.gz"
     log_info "下载地址: $url"
 
     log_info "正在下载..."
@@ -175,7 +189,8 @@ main() {
             check_permission
             init_directory
 
-            local version=$(get_version)
+            local release_info=$(get_latest_release)
+            local version=$(get_version_from_release "$release_info")
             local arch=$(get_arch)
 
             download_mihomo "$version" "$arch"
@@ -198,7 +213,8 @@ main() {
             log_info "当前版本: $current_version"
 
             log_info "检查最新版本..."
-            local latest_version=$(get_version)
+            local release_info=$(get_latest_release)
+            local latest_version=$(get_version_from_release "$release_info")
             log_info "最新版本: $latest_version"
 
             # 比较版本号
